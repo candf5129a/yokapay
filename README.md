@@ -1,6 +1,6 @@
 # YokaPay
 
-YokaPay is an early Flutter mobile banking prototype for Android and iOS. The first iteration focuses on a calm, trustworthy account overview, clear payment status, and accessible light and dark themes.
+YokaPay is an early Flutter mobile banking prototype for Android and iOS, designed to make transactions accessible and money easier to manage. The first iteration focuses on a calm, trustworthy account overview, clear payment status, and accessible light and dark themes.
 
 ## Product direction
 
