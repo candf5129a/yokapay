@@ -263,8 +263,9 @@ class _MainNavigationState extends State<MainNavigation> {
                           tooltip: 'Switch theme and close',
                           onPressed: () async {
                             await widget.onSetDark(!widget.dark);
-                            if (mounted)
+                            if (mounted) {
                               setState(() => _themePanelOpen = false);
+                            }
                           },
                           icon: Icon(widget.dark
                               ? Icons.dark_mode_rounded
@@ -373,7 +374,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final textColor = Colors.white;
+    const textColor = Colors.white;
     return CustomScrollView(slivers: [
       SliverAppBar(
         pinned: true,
@@ -492,9 +493,10 @@ class HomePage extends StatelessWidget {
                   onPressed: () async {
                     await Clipboard.setData(
                         const ClipboardData(text: '2034567812'));
-                    if (context.mounted)
+                    if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text('Demo account number copied')));
+                    }
                   },
                   tooltip: 'Copy account number',
                   visualDensity: VisualDensity.compact,
@@ -520,8 +522,8 @@ class HomePage extends StatelessWidget {
                               color: Colors.white.withValues(alpha: .9),
                               fontSize: 12,
                               fontWeight: FontWeight.w600))),
-                  Text('− ₦12,400',
-                      style: const TextStyle(
+                  const Text('− ₦12,400',
+                      style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                           fontWeight: FontWeight.w700)),
@@ -659,7 +661,7 @@ class WalletPage extends StatelessWidget {
           const SizedBox(height: 24),
           const _SectionTitle('Currency and market rates'),
           const SizedBox(height: 10),
-          _InfoBanner(
+          const _InfoBanner(
               icon: Icons.info_outline_rounded,
               text:
                   'Indicative demo rates only. Live pricing and currency wallets need a regulated provider connection.'),
@@ -691,9 +693,9 @@ class WalletPage extends StatelessWidget {
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
   @override
-  Widget build(BuildContext context) => _PageScaffold(
+  Widget build(BuildContext context) => const _PageScaffold(
         title: 'Notifications',
-        children: const [
+        children: [
           _PageIntro('Updates and reminders for your account.'),
           SizedBox(height: 16),
           _NoticeTile(
@@ -980,7 +982,7 @@ class _ConvertPageState extends State<ConvertPage> {
                                 .colorScheme
                                 .onSurfaceVariant)),
                     const SizedBox(height: 5),
-                    Text('${_to} ${_converted.toStringAsFixed(2)}',
+                    Text('$_to ${_converted.toStringAsFixed(2)}',
                         style: const TextStyle(
                             fontSize: 26, fontWeight: FontWeight.w700)),
                     const SizedBox(height: 6),
@@ -1109,17 +1111,17 @@ class _CardsPageState extends State<CardsPage> {
                 borderRadius: BorderRadius.circular(24)),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Row(children: [
-                const Icon(Icons.account_balance_wallet_rounded,
+              const Row(children: [
+                Icon(Icons.account_balance_wallet_rounded,
                     color: Colors.white),
-                const SizedBox(width: 8),
-                const Text('YOKAPAY',
+                SizedBox(width: 8),
+                Text('YOKAPAY',
                     style: TextStyle(
                         color: Colors.white,
                         letterSpacing: 1.3,
                         fontWeight: FontWeight.w700)),
-                const Spacer(),
-                const Icon(Icons.contactless_rounded, color: Colors.white70)
+                Spacer(),
+                Icon(Icons.contactless_rounded, color: Colors.white70)
               ]),
               const Spacer(),
               const Text('••••  ••••  ••••  2084',
@@ -1180,49 +1182,49 @@ class _CardsPageState extends State<CardsPage> {
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});
   @override
-  Widget build(BuildContext context) => _PageScaffold(
+  Widget build(BuildContext context) => const _PageScaffold(
         title: 'Activity',
         children: [
-          const _PageIntro(
+          _PageIntro(
               'Your transaction timeline and YokaPay partner discoveries.'),
-          const SizedBox(height: 18),
-          const _SectionTitle('Recent transactions'),
-          const SizedBox(height: 8),
-          const _ActivityTile(
+          SizedBox(height: 18),
+          _SectionTitle('Recent transactions'),
+          SizedBox(height: 8),
+          _ActivityTile(
               icon: Icons.shopping_bag_outlined,
               title: 'Market Square',
               subtitle: 'Today · Card payment · Demo',
               amount: '− ₦ 12,400',
               positive: false),
-          const _ActivityTile(
+          _ActivityTile(
               icon: Icons.call_received_rounded,
               title: 'Transfer received',
               subtitle: 'Yesterday · Sample entry',
               amount: '+ ₦ 35,000',
               positive: true),
-          const _ActivityTile(
+          _ActivityTile(
               icon: Icons.phone_android_rounded,
               title: 'Airtime purchase',
               subtitle: 'Monday · Sample entry',
               amount: '− ₦ 1,000',
               positive: false),
-          const SizedBox(height: 20),
-          const _SectionTitle('Partner offers'),
-          const SizedBox(height: 7),
-          const _InfoBanner(
+          SizedBox(height: 20),
+          _SectionTitle('Partner offers'),
+          SizedBox(height: 7),
+          _InfoBanner(
               icon: Icons.campaign_outlined,
               text:
                   'Partner placements are not connected. These are clearly labeled placeholders, not real endorsements.'),
-          const SizedBox(height: 10),
-          const _OfferCard(
+          SizedBox(height: 10),
+          _OfferCard(
               title: 'Everyday essentials',
               category: 'Sample sponsored placement',
               icon: Icons.shopping_basket_outlined),
-          const _OfferCard(
+          _OfferCard(
               title: 'Weekend city rides',
               category: 'Sample sponsored placement',
               icon: Icons.directions_bus_outlined),
-          const _OfferCard(
+          _OfferCard(
               title: 'Learning and skills',
               category: 'Sample sponsored placement',
               icon: Icons.menu_book_outlined),
@@ -1233,26 +1235,26 @@ class ActivityPage extends StatelessWidget {
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
   @override
-  Widget build(BuildContext context) => _PageScaffold(
+  Widget build(BuildContext context) => const _PageScaffold(
         title: 'Profile',
         children: [
-          const _FeatureCard(
+          _FeatureCard(
               icon: Icons.person_outline_rounded,
               title: 'Amara Nneka Okafor',
               subtitle: 'Demo profile · details are not verified'),
-          const SizedBox(height: 14),
-          const _PageIntro(
+          SizedBox(height: 14),
+          _PageIntro(
               'Account settings and help will be connected as YokaPay’s secure services are built.'),
-          const SizedBox(height: 14),
-          const _FeatureCard(
+          SizedBox(height: 14),
+          _FeatureCard(
               icon: Icons.security_rounded,
               title: 'Security and privacy',
               subtitle: 'Passkeys, device checks, and recovery design'),
-          const _FeatureCard(
+          _FeatureCard(
               icon: Icons.help_outline_rounded,
               title: 'Help and support',
               subtitle: 'Support channels are not connected in this prototype'),
-          const _FeatureCard(
+          _FeatureCard(
               icon: Icons.language_rounded,
               title: 'Language and region',
               subtitle: 'Choose settings when launch markets are confirmed'),
